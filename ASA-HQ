@@ -1,0 +1,17 @@
+ASA-HQ
+======
+enable
+config t
+hostname ASA-1
+int g0/0
+nameif outside
+ip address 192.1.12.1 255.255.255.0
+no shut
+exit
+int g0/1
+nameif inside
+ip address 10.1.1.1 255.255.255.0
+no shut
+exit
+wr
+route outside 0 0 192.1.12.3
