@@ -1,0 +1,17 @@
+ASA-BR
+======
+enable
+config t
+hostname ASA-2
+int g0/0
+nameif outside
+ip address 192.1.23.2 255.255.255.0
+no shut
+exit
+int g0/1
+nameif inside
+ip address 172.16.1.1 255.255.255.0
+no shut
+exit
+wr
+route outside 0 0 192.1.23.3
