@@ -32,6 +32,9 @@ Access-list
 access-list l2l permit ip host 10.1.1.2 host 172.16.1.2
 !
 
+Crypto map
+----------
+
 !
 crypto map mymap 1 match address l2l
 crypto map mymap 1 set ikev1 transform-set TSET
