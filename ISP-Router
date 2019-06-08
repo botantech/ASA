@@ -1,0 +1,15 @@
+ISP Router Config
+=================
+
+enable
+config t
+hostname ISP
+int fa0/0
+ip address 192.1.12.3 255.255.255.0
+no shut
+exit
+int fa0/1
+ip address 192.1.23.3 255.255.255.0
+no shut
+exit
+do wr
