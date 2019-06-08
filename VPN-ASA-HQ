@@ -1,0 +1,44 @@
+VPN-ASA-HQ
+----------
+
+Phase-I
+-------
+
+!
+crypto ikev1 policy 1
+hash md5
+authen pre-share
+group 2
+encry 3des
+!
+
+!
+tunnel-group 192.1.23.2 type ipsec-l2l
+tunnel-group 192.1.23.2 ipsec-attributes
+ikev1 pre-shared-key cisco
+!
+
+Phase-II
+--------
+
+!
+crypto ipsec ikev1 transform-set TSET esp-3des esp-md5-hmac
+!
+
+Access-list
+-----------
+
+!
+access-list l2l permit ip host 10.1.1.2 host 172.16.1.2
+!
+
+!
+crypto map mymap 1 match address l2l
+crypto map mymap 1 set ikev1 transform-set TSET
+crypto map mymap 1 set peer 192.1.23.2
+crypto map mymap interface outside
+!
+
+!
+crypto ikev1 enable outside
+!
