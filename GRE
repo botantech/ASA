@@ -1,0 +1,9 @@
+en
+conf t
+int tunnel 1
+ip address 2.2.2.1 255.0.0.0
+tunnel source 192.1.20.1
+tunnel destination 200.100.23.1
+exit
+ip route 172.16.1.0 255.255.255.0 tunnel 1
+
